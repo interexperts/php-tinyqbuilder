@@ -1,5 +1,3 @@
-
-
 <phpunit 
     bootstrap="./vendor/autoload.php" 
     colors="false"
@@ -18,6 +16,9 @@
         <log type="coverage-text" target="php://stdout"  showOnlySummary="true"/>
     </logging>
     <filter>
+        <whitelist>
+            <directory suffix=".php">./src</directory>
+        </whitelist>
         <blacklist>
             <directory suffix=".php">./vendor</directory>
         </blacklist>
