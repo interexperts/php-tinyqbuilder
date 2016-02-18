@@ -14,4 +14,4 @@ $builder->not()
         ->and()
         ->LessOrEqual('age', 65)
         ->rparen();
-$query = $builder->build();
+echo $builder->build(); // .tname.ehenry..aaron.o.sage.h18.aage.m65.f
