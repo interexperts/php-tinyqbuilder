@@ -2,7 +2,9 @@
 
 use \InterExperts\TinyQ\Builder;
 
-class BuilderTest extends PHPUnit_Framework_TestCase{
+namespace InterExperts\TinyQ;
+
+class BuilderTest extends \PHPUnit_Framework_TestCase{
 
 	public function testCanBuild(){
 		$builder = new Builder();
