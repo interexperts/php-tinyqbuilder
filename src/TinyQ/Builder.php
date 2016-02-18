@@ -10,6 +10,11 @@ class Builder{
 		return $this;
 	}
 
+	public function greaterOrEqual($key, $value){
+		$this->queryString .= "{$key}.h{$value}";
+		return $this;
+	}
+
 	public function _and(){
 		$this->queryString .= ".a";
 		return $this;
