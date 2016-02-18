@@ -40,7 +40,12 @@ class Builder{
 		return $this;
 	}
 
-	public function output(){
+	public function reset(){
+		$this->queryString = '';
+		return $this;
+	}
+
+	public function build(){
 		return $this->queryString;
 	}
 
