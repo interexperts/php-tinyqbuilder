@@ -18,6 +18,19 @@ class Builder{
 	 */
 	protected $queryString = '';
 
+	const GREATER = ".g";
+	const GREATER_OR_EQUAL = ".h";
+	const LESS = ".l";
+	const LESS_OR_EQUAL = ".m";
+	const NOT_EQUAL = ".n";
+	const NOT = ".t";
+	const _AND = ".a";
+	const _OR = ".o";
+	const LIKE = ".k";
+	const LPAREN = ".s";
+	const RPAREN = ".f";
+	const EQUAL = ".e";
+
 	/**
 	 * Construct an instance.
 	 * @example examples/basic.php 5 Example of creating a Buildquery
@@ -42,7 +55,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function greater($key, $value){
-		$this->queryString .= $this->createEscapedString($key, $value, '.g');
+		$this->queryString .= $this->createEscapedString($key, $value, self::GREATER);
 		return $this;
 	}
 
@@ -53,7 +66,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function greaterOrEqual($key, $value){
-		$this->queryString .= $this->createEscapedString($key, $value, '.h');
+		$this->queryString .= $this->createEscapedString($key, $value, self::GREATER_OR_EQUAL);
 		return $this;
 	}
 
@@ -64,7 +77,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function less($key, $value){
-		$this->queryString .= $this->createEscapedString($key, $value, '.l');
+		$this->queryString .= $this->createEscapedString($key, $value, self::LESS);
 		return $this;
 	}
 
@@ -75,7 +88,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function lessOrEqual($key, $value){
-		$this->queryString .= $this->createEscapedString($key, $value, '.m');
+		$this->queryString .= $this->createEscapedString($key, $value, self::LESS_OR_EQUAL);
 		return $this;
 	}
 
@@ -86,7 +99,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function notEqual($key, $value){
-		$this->queryString .= $this->createEscapedString($key, $value, '.n');
+		$this->queryString .= $this->createEscapedString($key, $value, self::NOT_EQUAL);
 		return $this;
 	}
 
@@ -95,7 +108,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function not(){
-		$this->queryString .= ".t";
+		$this->queryString .= self::NOT;
 		return $this;
 	}
 
@@ -104,7 +117,7 @@ class Builder{
 	 * @return Builder
 	 */
 	protected function _and(){
-		$this->queryString .= ".a";
+		$this->queryString .= self::_AND;
 		return $this;
 	}
 
@@ -113,7 +126,7 @@ class Builder{
 	 * @return Builder
 	 */	
 	protected function _or(){
-		$this->queryString .= ".o";
+		$this->queryString .= self::_OR;
 		return $this;
 	}
 
@@ -124,7 +137,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function like($key, $value){
-		$this->queryString .= $this->createEscapedString($key, $value, '.k');
+		$this->queryString .= $this->createEscapedString($key, $value, self::LIKE);
 		return $this;
 	}
 
@@ -133,7 +146,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function lparen(){
-		$this->queryString .= ".s";
+		$this->queryString .= self::LPAREN;
 		return $this;
 	}
 
@@ -142,7 +155,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function rparen(){
-		$this->queryString .= ".f";
+		$this->queryString .= self::RPAREN;
 		return $this;
 	}
 
@@ -153,7 +166,7 @@ class Builder{
 	 * @return Builder
 	 */
 	public function equal($key, $value){
-		$this->queryString .= $this->createEscapedString($key, $value, '.e');
+		$this->queryString .= $this->createEscapedString($key, $value, self::EQUAL);
 		return $this;
 	}
 

@@ -8,13 +8,12 @@ class BuilderTest extends \PHPUnit_Framework_TestCase{
 
 	public function testCanBuild(){
 		$builder = new Builder();
-		$example = $builder->greater("startdate", "{{DATETIMESTAMP}}")->and()->like("zoekterm", "{{STRING}}")->build();
 		$this->assertEquals(
 			"startdate.g{{DATETIMESTAMP}}.azoekterm.k{{STRING}}", 
-			$example
+			$builder->greater("startdate", "{{DATETIMESTAMP}}")->and()->like("zoekterm", "{{STRING}}")->build()
 		);
 
-		$builder = new Builder();
+		$builder->reset();
 		$this->assertEquals(
 			"startdate.g{{DATETIMESTAMP}}.o.szoekterm.k{{STRING}}.aloglevel.e{{LOGLEVEL}}.f", 
 			$builder->greater("startdate", "{{DATETIMESTAMP}}")->or()->lparen()->like("zoekterm", "{{STRING}}")->and()->equal("loglevel", "{{LOGLEVEL}}")->rparen()->build()
