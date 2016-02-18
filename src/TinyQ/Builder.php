@@ -25,6 +25,16 @@ class Builder{
 		return $this;
 	}
 
+	public function notEqual($key, $value){
+		$this->queryString .= "{$key}.n{$value}";
+		return $this;
+	}
+
+	public function not(){
+		$this->queryString .= ".t";
+		return $this;
+	}
+
 	public function _and(){
 		$this->queryString .= ".a";
 		return $this;
