@@ -15,6 +15,16 @@ class Builder{
 		return $this;
 	}
 
+	public function less($key, $value){
+		$this->queryString .= "{$key}.l{$value}";
+		return $this;
+	}
+
+	public function lessOrEqual($key, $value){
+		$this->queryString .= "{$key}.m{$value}";
+		return $this;
+	}
+
 	public function _and(){
 		$this->queryString .= ".a";
 		return $this;

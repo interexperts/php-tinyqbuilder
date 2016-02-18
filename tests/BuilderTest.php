@@ -94,7 +94,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase{
 
 	public function testImplementsRParen(){
 		$builder = new Builder();
-		$builder->reparen();
+		$builder->rparen();
 		$this->assertEquals('.f', $builder->build());
 	}
 
