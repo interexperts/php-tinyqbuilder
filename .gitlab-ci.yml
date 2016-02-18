@@ -6,6 +6,7 @@ php5.5-phpunit:
   script:
     - composer install --no-progress
     - ./vendor/bin/phpunit
+    - ./vendor/bin/phpdoc
   artifacts:
     paths:
       - built/

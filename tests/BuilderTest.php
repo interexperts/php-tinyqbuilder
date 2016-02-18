@@ -8,9 +8,10 @@ class BuilderTest extends \PHPUnit_Framework_TestCase{
 
 	public function testCanBuild(){
 		$builder = new Builder();
+		$example = $builder->greater("startdate", "{{DATETIMESTAMP}}")->and()->like("zoekterm", "{{STRING}}")->build();
 		$this->assertEquals(
 			"startdate.g{{DATETIMESTAMP}}.azoekterm.k{{STRING}}", 
-			$builder->greater("startdate", "{{DATETIMESTAMP}}")->and()->like("zoekterm", "{{STRING}}")->build()
+			$example
 		);
 
 		$builder = new Builder();
