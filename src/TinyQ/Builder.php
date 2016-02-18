@@ -18,18 +18,24 @@ class Builder{
 	 */
 	protected $queryString = '';
 
-	const GREATER = ".g";
-	const GREATER_OR_EQUAL = ".h";
-	const LESS = ".l";
-	const LESS_OR_EQUAL = ".m";
-	const NOT_EQUAL = ".n";
-	const NOT = ".t";
-	const _AND = ".a";
-	const _OR = ".o";
-	const LIKE = ".k";
-	const LPAREN = ".s";
-	const RPAREN = ".f";
-	const EQUAL = ".e";
+	const GREATER                       = ".g";
+	const GREATER_OR_EQUAL              = ".h";
+	const LESS                          = ".l";
+	const LESS_OR_EQUAL                 = ".m";
+	const NOT_EQUAL                     = ".n";
+	const NOT                           = ".t";
+	const _AND                          = ".a";
+	const _OR                           = ".o";
+	const LIKE                          = ".k";
+	const LPAREN                        = ".s";
+	const RPAREN                        = ".f";
+	const EQUAL                         = ".e";
+	const ESCAPE_DOT                    = "..";
+	const ESCAPE_LIKE_WILDCARD_ONE      = "_";
+	const ESCAPE_LIKE_WILDCARD_MULTIPLE = "-";
+	const LIKE_WILDCARD_ONE             = "._";
+	const LIKE_WILDCARD_MULTIPLE        = ".-";
+
 
 	/**
 	 * Construct an instance.
@@ -209,9 +215,9 @@ class Builder{
 	 * @return string
 	 */
 	protected function escape($string){
-		$string = str_replace('.', '..', $string);
-		$string = str_replace('..-', '.-', $string);
-		$string = str_replace('.._', '._', $string);
+		$string = str_replace('.', self::ESCAPE_DOT, $string);
+		$string = str_replace('.' . self::LIKE_WILDCARD_MULTIPLE, self::LIKE_WILDCARD_MULTIPLE, $string);
+		$string = str_replace('.' . self::LIKE_WILDCARD_ONE, self::LIKE_WILDCARD_ONE, $string);
 		return $string;
 	}
 
@@ -221,8 +227,8 @@ class Builder{
 	 * @return string
 	 */
 	public function escapeLike($string){
-		$string = str_replace('-', '.-', $string);
-		$string = str_replace('_', '._', $string);
+		$string = str_replace(self::ESCAPE_LIKE_WILDCARD_MULTIPLE, self::LIKE_WILDCARD_MULTIPLE, $string);
+		$string = str_replace(self::ESCAPE_LIKE_WILDCARD_ONE, self::LIKE_WILDCARD_ONE, $string);
 		return $string;
 	}
 
