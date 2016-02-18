@@ -1,0 +1,11 @@
+stages:
+  - test
+php5.5-phpunit:
+  stage: test
+  image: interexperts/php-5.5
+  script:
+    - composer install --no-progress
+    - ./vendor/bin/phpunit
+  artifacts:
+    paths:
+      - built/

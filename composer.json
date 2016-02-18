@@ -1,0 +1,20 @@
+{
+    "name": "interexperts/php-tinyqbuilder",
+    "description": "TinyQ builder implementation for PHP",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "InterExperts\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "InterExperts Webontwikkeling",
+            "email": "webontwikkeling@interexperts.nl"
+        }
+    ],
+    "require": {}
+}
