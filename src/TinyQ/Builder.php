@@ -90,6 +90,15 @@ class Builder{
 
 	protected function escape($string){
 		$string = str_replace('.', '..', $string);
+		$string = str_replace('..-', '.-', $string);
+		$string = str_replace('.._', '._', $string);
 		return $string;
 	}
+
+	public function escapeLike($string){
+		$string = str_replace('-', '.-', $string);
+		$string = str_replace('_', '._', $string);
+		return $string;
+	}
+
 }

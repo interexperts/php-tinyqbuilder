@@ -106,6 +106,17 @@ class BuilderTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals('name.ehenry..aaron', $builder->build());
 	}
 
+	public function testCanEscapeLikes(){
+		$builder = new Builder();
+		$builder->like('name', $builder->escapeLike('some_text') . '-');
+		$this->assertEquals('name.ksome._text-', $builder->build());
+
+		$builder = new Builder();
+
+		$builder->like('name', $builder->escapeLike('_some_text-') . '-');
+		$this->assertEquals('name.k._some._text.--', $builder->build());
+	}
+
 	public function testThrowOnIllegalMethod(){
 		$builder = new Builder();
 		$this->setExpectedException(
