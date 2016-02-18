@@ -100,6 +100,12 @@ class BuilderTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals('.f', $builder->build());
 	}
 
+	public function testCanEscapeDots(){
+		$builder = new Builder();
+		$builder->equal('name', 'henry.aaron');
+		$this->assertEquals('name.ehenry..aaron', $builder->build());
+	}
+
 	public function testThrowOnIllegalMethod(){
 		$builder = new Builder();
 		$this->setExpectedException(
