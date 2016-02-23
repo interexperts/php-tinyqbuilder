@@ -18,7 +18,9 @@ script:
   - mkdir -p build/logs
   - php vendor/bin/phpunit
   - php vendor/bin/phpdoc
-  - bash ./deploy-docs.sh
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      bash ./deploy-docs.sh;
+    fi;
 
 install:
   - composer install
