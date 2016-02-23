@@ -9,9 +9,18 @@ matrix:
     allow_failures:
         - php: hhvm
 
+env:
+  global:
+  - GH_REF: github.com/interexperts/php-tinyqbuilder.git
+  - secure: bG2BmgkcMrq+b7SDpUJxIp5o7mzi//GXpLTC2jTuMspzvsC1RVTRkTIsioRMgrXs/fI/D1lGZUsDWBxP3Uly1VmnMwmX6WMx8pqdsdJ5Ve5ySZ/zpP4yQddHut6I1XAmSKO5N8sDK9lrF4bp3T7BWVxuBbsTzSSGqV2M0V/tBh5KxvkSrr7Nlg00i5nPUtE34H9VRQC846yZw4jEXKGrqxJGENrpff0qXzwsqLzk9llwN0xaRpi7ez3C+22g+f9H2NyLZ/J2K+zn/pvYyBSn5hdEysdjq6lZfXb+1ASt+tazytsgq8EXpIqOWhTafjZg16AGq5lokF0oWRpu8gOobad3qNoHjpgYh+DqDSXp1rd8I2b4y21vs12REJ7roTngUPijCNi84ljmwOnH0bsSUByhH6IyvI7PBn7+uQAyUujwfwvDRKuG5FlQbxe+63Bw0OUBtKRVISQmIMPC9QdI3a7QDiFh+J3IT8kVnDv21Mc1LbOKGgB1scRIkLz0SUD9jMrwX/nkq0/nvZPyM5Uy+BchVyvDHZDDMIr/HIl3MGoybJ6d7SgrTY3+gC1NUYNYgd4+tKxB7At9ZGCnHNE3CMTBd3LK2rMa4OGsOGBcMcL7A6OYPU/Ke65m1t2WhHhvO6TUThdayfDDmoxROv53S0WOgzyLhtGM5fgs38PoQuM=
+
 script:
   - mkdir -p build/logs
   - php vendor/bin/phpunit
+  - php vendor/bin/phpdoc
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      bash ./deploy-docs.sh;
+    fi;
 
 install:
   - composer install
